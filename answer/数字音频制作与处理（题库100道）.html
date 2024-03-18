@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- 
+    数字音频制作与处理
+    五、论述题：本大题共□小题，每小题□分，共□分。请在答题卡的非选择题答题区作答。
+
+1.	请论述如何根据不同场景和目的选择合适的混响效果。
+  1、根据音乐类型选择混响效果：不同的音乐类型需要不同的混响效果，可以在混响效果库中选择合适的混响效果，或根据音乐类型自行调节混响参数。
+  2、不同的场景需要不同的混响效果，可以根据场景选择合适的混响效果，或根据实际情况调节混响参数， 
+  3、根据声音特点选择混响效果：不同的声音特点需要不同的混响参数，可以根据声音特点选择合适的混响效果，或根据实际情况调节混响参数。
+
+2.	请论述你认为数字音频制作与处理过程中最重要的是什么。
+  1、	数字音频信号是由一系列连续的数字样本组成的
+  2、	采样：将连续的模拟音频信号转换为离散的数字音频信号。
+  3、	量化：将模拟信号的连续强度值转换为离散的数字强度值。
+  4、	压缩：减少数字音频信号的大小，以便于存储和传输。
+  5、	恢复：将压缩后的数字音频信号恢复为原始的连续模拟音频信号。
+  6、	处理：对数字音频信号进行各种操作，如滤波、混音、调节音量等。
+
+3.	请论述声像定位对于增强音频空间感和真实感有哪些帮助。
+  在声像定位任务中，注意力机制可以用来动态地调整网络对不同时间和频率上的特征的关注程度。通过对输入特征进行加权，注意力机制使网络能够自适应地聚焦于对声源定位更有用的信息，而抑制对无关信息的响应。这样，网络可以更加精确地定位声源，并对复杂的声音环境具有更好的适应能力。来增强音频空间感和真实感
+
+4.	请论述音频降噪技术的应用场景有哪些。
+    一直存在且响度、频率分布等特性不随时间变化或变化缓慢。  如手机、电脑之类的设备底噪、电脑散热架的风扇声等
+  非稳态噪声：这些噪声等统计特性随时间变化   比如开关门等声音、门铃声、背景人声等。     非稳态噪声按照是否连续又分为 连续非稳态噪声（持续的背景人声）和瞬态噪声（敲击声）。
+  室外或室内直播时，存在多人背景声、多人脚步声、风扇空调声、物品挪动声等噪音。
+  多人会议或在线教学时，存在多人背景声、键盘敲击声等噪音。
+  在线视频会议与通话 在线实时会议易受到办公室嘈杂人声、键盘声、环境空调声的干扰，可以使用音频智能降噪组件对纯净人声进行实时增强，提升直播体验。
+  实时视频直播 随着直播越来越普及，直播地点也逐渐多样化，例如市场、地铁站、景点、商场等喧闹场所。通过使用音频智能降噪组件，可以使主播的声音更加通透清晰，从而提升直播效果
+  社交娱乐 社交娱乐场景中用户经常有环境隐私化的需求，使用音频智能降噪组件可以最大限度的去除环境中的背景噪声，提供更高质量的通话体验。
+  在线教育 老师和学生在进行直播连麦时，可通过音频智能降噪组件清晰的进行语音交互，为老师和学生提供更佳的教学体验。
+
+5.	请论述MP3格式在音频传输和存储中的优势和局限性。
+  MP3格式优势：
+  　　1、由于其文件尺寸小，音质好；该格式直到现在作为主流音频格式的地位仍难以被撼动。
+  　　2、 MP3格式压缩音乐的采样频率多种多样，可以用64Kbps或更低的采样频率节省空间，也可以用320Kbps的标准达到极高的音质。
+  　　3、MP3格式的音频文件与其他音频格式文件相比储存占用容量小。
+  MP3格式劣势：
+  　　1、MP3格式音频文件的压缩是一种有损压缩。
+  　　2、MP3格式音频编码具有10：1~12：1的高压缩率，同时基本保持低音频部分不失真，但是牺牲了声音文件中12KHz到16KHz高音频这部分的质量。
+  　　3、MP3文件可能在某些播放器上无法播放。因为采用缺省的CBR（固定采样频率）技术可以以固定的频率采样一首歌曲，而VBR（可变采样频率）则可以在音乐“忙”的时候加大采样的频率获取更高的音质。这样产生的MP3文件可能在某些播放器上无法播放。
+
+6.	请论述AAC音频编码格式在音频传输和存储中的优势和局限性。
+  AAC音频编解码由于其高效的压缩能力和优秀的音质表现，具有明显的优势。 它能够减小音频文件的大小，提高传输效率，同时又能够保证音频的高清播放效果，适用于多种高清音频传输场景。 
+  AAC音频编解码在处理非线性和超低频信号时存在局限性，可能导致一定程度的音质损失 -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap{
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+      }
+      .serch {
+        position: sticky;
+        left: 0;
+        top: 0;
+        padding-top: 20px;
+        box-sizing: border-box;
+        background-color: #fff;
+      }
+      .serch-input {
+        width: 60%;
+        height: 30px;
+        padding-left: 10px;
+        border: 1px solid #bbb;
+        outline: none;
+        border-radius: 6px;
+      }
+      .serch-btn,
+      .serch-btn-close {
+        width: 14%;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 6px;
+        outline: none;
+        border: 1px solid #f60;
+        color: #eee;
+        background-color: #f60;
+      }
+      .serch-btn:hover {
+        background-color: #f90;
+      }
+      .serch-btn-close {
+        background-color: red;
+      }
+      .serch-message {
+        color: red;
+      }
+
+      .search-list {
+        width: 100%;
+        overflow: hidden;
+      }
+      .serch-item {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      .serch-item-line {
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px dashed #987cb9;
+        color: #987cb9;
+      }
+      .search-seleact-title{
+        color: #f60;
+        display: inline-block;
+        background-color: rgb(247, 251, 6);
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+    </style>
+    <div class="wrap">
+      <div class="serch">
+        <input class="serch-input" />
+        <button class="serch-btn">搜索</button>
+        <button class="serch-btn-close">清空</button>
+        <div class="serch-message"></div>
+      </div>
+      <div class="search-list"></div>
+    </div>
+    <script>
+      // subjects 科目
+      // ordinal 序号
+      // type 题目类型
+      // title 题目类型
+      // options 选项
+      // answer 正确选项
+      let answerData = [{"ordinal":1,"subjects":"数字音频制作与处理","title":"现在一般把（      ）dB SPL 称作人耳的痒阈。","options":["A: 120","B: 130","C: 140","D: 150"],"answer":"A"},{"ordinal":2,"subjects":"数字音频制作与处理","title":"一个设备或系统所能传送的最大和最小声音之间的范围一般被称为（      ）。","options":["A: 静态范围","B: 动态范围","C: 波动范围","D: 浮动范围"],"answer":"B"},{"ordinal":3,"subjects":"数字音频制作与处理","title":"家用摄影机和低端准专业摄影机都可能具备（      ）。","options":["A: 平衡式鼠标接入口","B: 平衡式线路输出口","C: 平衡式线路输入口","D: 平衡式话筒输入口"],"answer":"D"},{"ordinal":4,"subjects":"数字音频制作与处理","title":"低端消费类摄影机上最常见的编码格式是（      ）。","options":["A: 单声道杜比数字编码","B: 双声道杜比数字编码","C: 三声道杜比数字编码","D: 多声道杜比数字编码"],"answer":"B"},{"ordinal":5,"subjects":"数字音频制作与处理","title":"脉冲编码调制一般简称为（      ）。","options":["A: PCD","B: BCM","C: OCM","D: PCM"],"answer":"D"},{"ordinal":6,"subjects":"数字音频制作与处理","title":"下列不属于声音的维度的是（      ）。","options":["A: 演变范围","B: 动态范围","C: 时长","D: 空间感"],"answer":"A"},{"ordinal":7,"subjects":"数字音频制作与处理","title":"人耳所能感受到的频率范围是（      ）。","options":["A: 2Hz-2000Hz","B: 2Hz-200kHz","C: 20Hz-20kHz","D: 200Hz-20kHz"],"answer":"C"},{"ordinal":8,"subjects":"数字音频制作与处理","title":"通常被电影制作者用来达到某种艺术目的。","options":["A: 频率范围","B: 动态范围","C: 声音波长","D: 声音感知"],"answer":"B"},{"ordinal":9,"subjects":"数字音频制作与处理","title":"量化比特率又可被称为（      ）。","options":["A: 字长","B: 解析维度","C: 字节","D: 字段数"],"answer":"A"},{"ordinal":10,"subjects":"数字音频制作与处理","title":"（      ）决定了所能录制音频的上限频率。","options":["A: 采样频率","B: 录制频率","C: 波动频率","D: 动态频率"],"answer":"A"},{"ordinal":11,"subjects":"数字音频制作与处理","title":"对于大多数专业人士而言，音频的最低标准不能低于（      ）。","options":["A: 24kHz/16bit","B: 48kHz/16bit","C: 24kHz/8bit","D: 48kHz/8bit"],"answer":"B"},{"ordinal":12,"subjects":"数字音频制作与处理","title":"电话传输的频率范围大约是（      ）。","options":["A: 2Hz-2kHz","B: 30Hz-30kHz","C: 300Hz-3kHz","D: 2Hz-2000Hz"],"answer":"C"},{"ordinal":13,"subjects":"数字音频制作与处理","title":"1927年左右，声音进入电影使得电影的还放速度标准固定在每秒（      ）格。","options":["A: 12","B: 24","C: 30","D: 48"],"answer":"B"},{"ordinal":14,"subjects":"数字音频制作与处理","title":"解析度与动态范围成（      ）。","options":["A: 反比","B: 正比","C: 可能正比也可能反比","D: 无关"],"answer":"B"},{"ordinal":15,"subjects":"数字音频制作与处理","title":"电视机屏幕一般比影院银幕的亮度高出（      ）。","options":["A: 1-2倍","B: 2-4倍","C: 2-6倍","D: 6-8倍"],"answer":"C"},{"ordinal":16,"subjects":"数字音频制作与处理","title":"采样频率必须是所录音频最高频率的（      ）。","options":["A: 一倍以上","B: 两倍以上","C: 两倍以内","D: 四倍以上"],"answer":"B"},{"ordinal":17,"subjects":"数字音频制作与处理","title":"视频中的每一帧被分为两场或是半帧指的是（      ）。","options":["A: 逐行扫描","B: 逐帧扫描","C: 半帧扫描","D: 隔行扫描"],"answer":"D"},{"ordinal":18,"subjects":"数字音频制作与处理","title":"声波每秒振动的周期数用（      ）表示。","options":["A: 赫兹","B: 分贝","C: 比特","D: 字节"],"answer":"A"},{"ordinal":19,"subjects":"数字音频制作与处理","title":"NTSC制视频每5帧视频严格对应（      ）个音频采样点。","options":["A: 8000","B: 7008","C: 8008","D: 7000"],"answer":"C"},{"ordinal":20,"subjects":"数字音频制作与处理","title":"高清电视的英文缩写是（      ）。","options":["A: HCDTV","B: HDTV","C: HTV","D: HLTV"],"answer":"B"},{"ordinal":21,"subjects":"数字音频制作与处理","title":"与数字音频采样频率成正比的是（      ）。","options":["A: 动态范围","B: 声道数","C: 频次范围","D: 频率范围"],"answer":"D"},{"ordinal":22,"subjects":"数字音频制作与处理","title":"获得高质量声音的关键所在是（      ）。","options":["A: 控制噪声来源","B: 专业的录音设备","C: 专业的录音人员","D: 恰当的话筒技术"],"answer":"A"},{"ordinal":23,"subjects":"数字音频制作与处理","title":"“比特”是合成词，意为（      ）数字。","options":["A: 十进制","B: 八进制","C: 四进制","D: 二进制"],"answer":"D"},{"ordinal":24,"subjects":"数字音频制作与处理","title":"美国标准的NTSC制视频采用（      ）的还放速度。","options":["A: 30fps","B: 24fps","C: 48fps","D: 64fps"],"answer":"A"},{"ordinal":25,"subjects":"数字音频制作与处理","title":"下列不属于单系统录制用于数字视频制作中时所用摄影机必备的功能的是（      ）。","options":["A: 外接音频输入口","B: 手动电平控制功能","C: 高质量的音频电路","D: 内接音画同步器"],"answer":"D"},{"ordinal":26,"subjects":"数字音频制作与处理","title":"（      ）的引入使得单系统录制变得可行。","options":["A: 视频摄影机","B: 视频录制器","C: 视频拍摄器","D: 影音录像器"],"answer":"A"},{"ordinal":27,"subjects":"数字音频制作与处理","title":"欧洲彩色电视的标准是（      ）。","options":["A: 24fps","B: 25fps","C: 30fps","D: 48fps"],"answer":"B"},{"ordinal":28,"subjects":"数字音频制作与处理","title":"液晶显示器的英文缩写是（      ）。","options":["A: LCD","B: CD","C: OLED","D: HCD"],"answer":"A"},{"ordinal":29,"subjects":"数字音频制作与处理","title":"下列能够使视频更好地实现在系统间的转换的模式是（      ）。","options":["A: 24fps","B: 25fps","C: 29.97fps","D: 30fps"],"answer":"A"},{"ordinal":30,"subjects":"数字音频制作与处理","title":"标准数字视频使用（      ）扫描线。","options":["A: 240条","B: 480条","C: 720条","D: 640条"],"answer":"B"},{"ordinal":31,"subjects":"数字音频制作与处理","title":"要实现每秒运行25帧，美国电影在欧洲电视上重放会加快（      ）的速度。","options":["A: 0.04","B: 0.06","C: 0.08","D: 0.1"],"answer":"A"},{"ordinal":32,"subjects":"数字音频制作与处理","title":"在NTSC制中，帧位的计数是从0到（      ），然后返回到0。","options":["A: 59","B: 60","C: 29","D: 30"],"answer":"C"},{"ordinal":33,"subjects":"数字音频制作与处理","title":"欧洲和其他一些采用50Hz电源的国家所用的电视制式是（      ）。","options":["A: NTSC制","B: PAL制","C: PSC制","D: NTV制"],"answer":"B"},{"ordinal":34,"subjects":"数字音频制作与处理","title":"以标准24fps拍摄的影院电影转沉成NTSC制视频需要经过（      ）转换。","options":["A: 0.0854166666666667","B: 0.04375","C: 0.16875","D: 0.127777777777778"],"answer":"A"},{"ordinal":35,"subjects":"数字音频制作与处理","title":"便携式摄影机都有（      ），可以进行各种时间设置。","options":["A: 内部计时器","B: 内部振荡器","C: 内部时钟","D: 内部解码器"],"answer":"B"},{"ordinal":36,"subjects":"数字音频制作与处理","title":"话筒电平、线路电平和扬声器电平中可能采用相同的接头来连接的是（      ）。","options":["A: 话筒电平、线路电平","B: 扬声器电平、线路电平","C: 话筒电平、扬声器电平","D: 话筒电平、线路电平和扬声器电平"],"answer":"A"},{"ordinal":37,"subjects":"数字音频制作与处理","title":"长期以来在美国使用的模拟表是（      ）。","options":["A: UV表","B: VU表","C: CV表","D: NV表"],"answer":"B"},{"ordinal":38,"subjects":"数字音频制作与处理","title":"（      ）可以避免机械振动通过话筒的固定装置传到话筒上产生噪声。","options":["A: 防风罩","B: 防喷罩","C: 减振架","D: 缓动器"],"answer":"C"},{"ordinal":39,"subjects":"数字音频制作与处理","title":"在美国，大多数摄影机实际捕获的帧率是（      ）。","options":["A: 24fps","B: 23.976fps","C: 24.976fps","D: 22.976fps"],"answer":"B"},{"ordinal":40,"subjects":"数字音频制作与处理","title":"影院宽银幕的宽高比一般是（      ）。","options":["A: 0.16875","B: 0.127777777777778","C: 0.672916666666667","D: 0.386111111111111"],"answer":"C"},{"ordinal":41,"subjects":"数字音频制作与处理","title":"编解码器的缩写是（      ）。","options":["A: codec","B: codmc","C: cod","D: coec"],"answer":"A"},{"ordinal":42,"subjects":"数字音频制作与处理","title":"下列不属于最常用的高清数字视频格式的是（      ）。","options":["A: 1080i60","B: 1080p30","C: 1080p24","D: 1080i30"],"answer":"D"},{"ordinal":43,"subjects":"数字音频制作与处理","title":"几乎所有的准专业级数字摄影机、大部分消费类机型都支持的时间码是（      ）。","options":["A: SMT","B: SMPE","C: SMPTE ","D: STE"],"answer":"C"},{"ordinal":44,"subjects":"数字音频制作与处理","title":"“SP”和“LP”分别指的是（      ）。","options":["A: 短时间播放，长时间播放","B: 标准质量，高质量","C: 低质量，高质量","D: 标准播放，长时间播放"],"answer":"D"},{"ordinal":45,"subjects":"数字音频制作与处理","title":" AVC/H.264的压缩比接近（      ）。","options":["A: 0.417361111111111","B: 0.834027777777778","C: 4.16736111111111","D: 8.33402777777778"],"answer":"B"},{"ordinal":46,"subjects":"数字音频制作与处理","title":"如果无线话筒的发射频率较少被其他系统占用，价格会相应（      ）。","options":["A: 降低","B: 增加","C: 不变化","D: 可能增加也可能降低"],"answer":"B"},{"ordinal":47,"subjects":"数字音频制作与处理","title":"现在最常用的编解码器是（      ）系列。","options":["A: MPEG-1","B: MPEG-2","C: MPEG-3","D: MPEG-6"],"answer":"B"},{"ordinal":48,"subjects":"数字音频制作与处理","title":"无线话筒常用的传输方法是（      ）。","options":["A: 调频法","B: 固频法","C: 变频法","D: 混合频法"],"answer":"A"},{"ordinal":49,"subjects":"数字音频制作与处理","title":"减少多路接收问题的最好方法叫（      ）。","options":["A: 分类接收","B: 分频接收","C: 分集接收","D: 分段接收"],"answer":"C"},{"ordinal":50,"subjects":"数字音频制作与处理","title":"超高频段的英文缩写是（      ）。","options":["A: UHF","B: VHF","C: HF","D: HHF"],"answer":"A"},{"ordinal":51,"subjects":"数字音频制作与处理","title":"鉴于FM系统本身有噪声，模拟发射机和接收机之间使用（      ）来降噪。","options":["A: 数字无线降噪器","B: 压扩降噪器","C: 内部调频降噪器","D: 扩展降噪器"],"answer":"B"},{"ordinal":52,"subjects":"数字音频制作与处理","title":"一般发射机上标有SIG的是（      ）。","options":["A: 过载指示灯","B: 发光指示灯","C: 信号指示灯","D: 检测指示灯"],"answer":"C"},{"ordinal":53,"subjects":"数字音频制作与处理","title":"即使是完美的16bit录音也只能达到（      ）的动态范围。","options":["A: 90dB","B: 93dB","C: 100dB","D: 103dB"],"answer":"B"},{"ordinal":54,"subjects":"数字音频制作与处理","title":"著名静物照片《月出赫尔南德斯》的拍摄者是（      ）。","options":["A: 安塞尔·亚当斯","B: 爱德华·韦斯顿","C: 尤金·史密斯","D: 理查德·埃韦顿"],"answer":"A"},{"ordinal":55,"subjects":"数字音频制作与处理","title":"导致失真的原因是（      ）。","options":["A: 平均电平","B: 峰值电平","C: 线路电平","D: 话筒电平"],"answer":"B"},{"ordinal":56,"subjects":"数字音频制作与处理","title":"Pa是（      ）的单位。","options":["A: 音量","B: 声音频率","C: 声压","D: 声道数"],"answer":"C"},{"ordinal":57,"subjects":"数字音频制作与处理","title":"摄影机的输入端只能容纳（      ）dB的信号。","options":["A: 100","B: 105","C: 110","D: 115"],"answer":"B"},{"ordinal":58,"subjects":"数字音频制作与处理","title":"在话筒内部电路前端再加一个（      ）可以不失真地录下超过132dB的高电平声音。","options":["A: 调频器","B: 垫整衰减器","C: 降噪器","D: 峰值弱化器"],"answer":"B"},{"ordinal":59,"subjects":"数字音频制作与处理","title":"对付一场戏中宽动态范围声音的最普通的方法是（      ）。","options":["A: 控制增益","B: 降低噪音","C: 控制衰减","D: 降低频率"],"answer":"A"},{"ordinal":60,"subjects":"数字音频制作与处理","title":"如今节目的录制模式是（      ）。","options":["A: 磁带录制模式","B: 存储卡录制模式","C: 云端录制模式","D: 光盘录制模式"],"answer":"B"},{"ordinal":61,"subjects":"数字音频制作与处理","title":"下列不属于数字影像记录媒介的是（      ）。","options":["A: 存储卡","B: 磁带","C: 光盘","D: 云"],"answer":"D"},{"ordinal":62,"subjects":"数字音频制作与处理","title":"如果信号在话筒预放器（      ）就已经失真或产生噪声，调节话筒输入通路的增益并不能解决问题。","options":["A: 输出端","B: 输入端","C: 输入端和输出端","D: 处理端"],"answer":"B"},{"ordinal":63,"subjects":"数字音频制作与处理","title":"超过（      ）的声音会瞬间导致听力损伤。","options":["A: 110dB","B: 120dB","C: 130dB","D: 140dB"],"answer":"D"},{"ordinal":64,"subjects":"数字音频制作与处理","title":"下列型号摄影机中能使用P2卡的是（      ）。","options":["A: HVX200","B: AC7","C: AF100","D: HMC40"],"answer":"A"},{"ordinal":65,"subjects":"数字音频制作与处理","title":"CF卡的常用的容量范围是（      ）。","options":["A: 2GB-2TB","B: 8-256GB","C: 三声道杜比数字编码","D: 4-64GB"],"answer":"B"},{"ordinal":66,"subjects":"数字音频制作与处理","title":"Sound Devices700系列和Fostex FR-2都属于（      ）常用的录音机。","options":["A: 单系统录音","B: 双系统录音","C: 四系统录音","D: 多系统录音"],"answer":"B"},{"ordinal":67,"subjects":"数字音频制作与处理","title":"下列关于PluralEyes软件说法不正确的是（      ）。","options":["A: 能够实现多台摄影机素材的同步","B: 能够与主录音机音频同步","C: 能够在相距较远的多机位拍摄中对每台摄影机的参考轨进行匹配","D: 不用依赖于手动找到每个片段上传统拍板的同步点"],"answer":"C"},{"ordinal":68,"subjects":"数字音频制作与处理","title":"使用场记板时，需要在每个镜头拍摄的（      ）打板。","options":["A: 开头","B: 结尾","C: 开头和结尾均可","D: 间隙"],"answer":"A"},{"ordinal":69,"subjects":"数字音频制作与处理","title":"环境声也叫做（      ）。","options":["A: 现场气氛声","B: 同期声","C: 对白声","D: 背景声"],"answer":"D"},{"ordinal":70,"subjects":"数字音频制作与处理","title":"索尼的专业数字摄影机使用的存储卡是（      ）。","options":["A: 标准SD卡","B: SxS卡","C: CF卡","D: P2卡"],"answer":"B"},{"ordinal":71,"subjects":"数字音频制作与处理","title":"下列不属于P2卡常用的视频格式的是（      ）。","options":["A: MPEG-2","B: DV","C: DVCPRO","D: AVC"],"answer":"A"},{"ordinal":72,"subjects":"数字音频制作与处理","title":"”导演把什么东西放到一个场景里”指的是（      ）。","options":["A: 布景","B: 场景设计","C: 场面调度","D: 场景策划"],"answer":"C"},{"ordinal":73,"subjects":"数字音频制作与处理","title":"最常见的光纤接口是（      ）。","options":["A: TOSLINK","B: LILINK","C: PDIFLINK","D: SLINK"],"answer":"A"},{"ordinal":74,"subjects":"数字音频制作与处理","title":"下列属于小字节序的文件格式是（      ）。","options":["A: SDII","B: AIFF","C: AIFF-C","D: WAV"],"answer":"D"},{"ordinal":75,"subjects":"数字音频制作与处理","title":"1GB的存储量可以存储（      ）分钟单声道48kHz采样、16bit量化的数字音频信号。","options":["A: 100","B: 73","C: 173","D: 200"],"answer":"C"},{"ordinal":76,"subjects":"数字音频制作与处理","title":"下列对于刻画和强调特定效果很有帮助的声音是（      ）。","options":["A: 背景声","B: 点效果声","C: 现场气氛声","D: 同期声"],"answer":"B"},{"ordinal":77,"subjects":"数字音频制作与处理","title":"低通滤波器也叫做（      ）。","options":["A: 高切滤波器","B: 无源滤波器","C: 带阻滤波器","D: 全通滤波器"],"answer":"A"},{"ordinal":78,"subjects":"数字音频制作与处理","title":"下列关于陷波器说法不正确的是（      ）。","options":["A: 能够消除带宽很窄的频率","B: 对相邻频率影响很小","C: 常用来减弱某种讨厌的音调","D: 均衡器无法作为陷波器使用"],"answer":"D"},{"ordinal":79,"subjects":"数字音频制作与处理","title":"下列格式中常用于广播领域的是（      ）。","options":["A: BWF格式","B: AIFF格式","C: AIFF-C格式","D: AAF格式"],"answer":"A"},{"ordinal":80,"subjects":"数字音频制作与处理","title":"常用来制造真实感的声音是（      ）。","options":["A: 同期声","B: 背景声","C: 拟音声","D: 现场气氛声"],"answer":"C"},{"ordinal":81,"subjects":"数字音频制作与处理","title":"下列关于现场气氛声说法不正确的是（      ）。","options":["A: 穿插在对白声轨之中","B: 和背景声没区别","C: 没有单独的声轨","D: 是画面所展示的空间里相对安静的声音"],"answer":"B"},{"ordinal":82,"subjects":"数字音频制作与处理","title":"下列关于带通滤波器说法不正确的是（      ）。","options":["A: 可以用来模范电话声","B: 允许一定频段的信号通过","C: 只能抑制低频或直流分量","D: 由高通与低通滤波器组合而成"],"answer":"C"},{"ordinal":83,"subjects":"数字音频制作与处理","title":"下列不属于混响器参数的是（      ）。","options":["A: 初始延时","B: 混响时间","C: 干声","D: 时域"],"answer":"D"},{"ordinal":84,"subjects":"数字音频制作与处理","title":"普通小房间的混响时间大概是（      ）。","options":["A: 2s","B: 0.5s","C: 5s","D: 5s以上"],"answer":"B"},{"ordinal":85,"subjects":"数字音频制作与处理","title":"下列关于原始素材克隆说法正确的是（      ）。","options":["A: 和原始素材拷贝概念一致","B: 是指对原始素材进行全解析度数字复制的版本","C: 可以是对原始数字信号进行模拟辅助后的复制版","D: 指的不是逐比特复制"],"answer":"B"},{"ordinal":86,"subjects":"数字音频制作与处理","title":"下列关于中间母带说法不正确的是（      ）。","options":["A: 可以是磁带或磁盘文件","B: 可以是某个剪辑完成后的工作拷贝","C: 是记录在磁带或磁盘上的完成母版","D: 是指除了原始素材和发行母带之外任何后期制作缓解所生成的版本"],"answer":"C"},{"ordinal":87,"subjects":"数字音频制作与处理","title":"下列关于录音棚母带说法不正确的是（      ）。","options":["A: 又叫发行母带","B: 包含按照完成格式制作的节目文件","C: 不包含预告片、识别商标等内容","D: 放在主要内容的开头或结尾部分"],"answer":"C"},{"ordinal":88,"subjects":"数字音频制作与处理","title":"下列对WAV格式描述不正确的是（      ）。","options":["A: 最早出现在Windows中","B: 互换性强","C: 广泛应用于PC","D: 通道交织"],"answer":"D"},{"ordinal":89,"subjects":"数字音频制作与处理","title":"教堂的混响时间大概是（      ）。","options":["A: 0.5s","B: 1s","C: 2s","D: 5s以上"],"answer":"D"},{"ordinal":90,"subjects":"数字音频制作与处理","title":"下列不属于两通道矩阵编码环绕声格式的编码器采用的商标名的是（      ）。","options":["A: 杜比环绕声","B: 杜比定向逻辑II","C: 杜比数字","D: SRS环形环绕声"],"answer":"C"},{"ordinal":91,"subjects":"数字音频制作与处理","title":"下列不属于振幅-相位矩阵编解码可能出现的负面效果的是（      ）。","options":["A: 立体声场静态缩小","B: 立体声场动态增大","C: 魔幻环绕声效果","D: 声像拖拽"],"answer":"B"},{"ordinal":92,"subjects":"数字音频制作与处理","title":"12bit录音理论上只能提供（      ）的动态范围。","options":["A: 20dB","B: 72dB","C: 102dB","D: 200dB"],"answer":"B"},{"ordinal":93,"subjects":"数字音频制作与处理","title":"电影和视频都依靠的是人眼的（      ）来制造活动影像。","options":["A: 视错觉现象","B: 明暗适应能力","C: 视觉暂留现象","D: 眩光"],"answer":"C"},{"ordinal":94,"subjects":"数字音频制作与处理","title":"黑白电视的标准帧率采用的是（      ）。","options":["A: 20fps","B: 30fps","C: 29fps","D: 40fps"],"answer":"B"},{"ordinal":95,"subjects":"数字音频制作与处理","title":"一些摄影机提供24p胶片模式，其中的“p”是指（      ）。","options":["A: 像素","B: 逐行扫描","C: 隔行扫描","D: 点"],"answer":"B"},{"ordinal":96,"subjects":"数字音频制作与处理","title":"下列关于隔行扫描说法不正确的是（      ）。","options":["A: 可让每秒显示更多帧","B: 会使带宽增加","C: 提供完整的垂直细节","D: 具有逐行扫描所需的相同带宽"],"answer":"B"},{"ordinal":97,"subjects":"数字音频制作与处理","title":"时间码显示为“05:15:22:23”中，“23”指的是（      ）。","options":["A: 23分钟","B: 23秒","C: 23毫秒","D: 23帧"],"answer":"D"},{"ordinal":98,"subjects":"数字音频制作与处理","title":"非失落帧的英文缩写是（      ）。","options":["A: DF","B: LF","C: NDF","D: NLF"],"answer":"C"},{"ordinal":99,"subjects":"数字音频制作与处理","title":"大多数24p模式只支持（      ）时间码。","options":["A: DF","B: NDF","C: LF","D: NLF"],"answer":"B"},{"ordinal":100,"subjects":"数字音频制作与处理","title":"下列不属于两通道矩阵编码环绕声格式的解码器采用的商标名的是（      ）。","options":["A: SRS环形环绕声","B: 逻辑7","C: 杜比定向逻辑","D: 杜比环绕声"],"answer":"A"}]
+      var serch = document.getElementsByClassName("serch")[0];
+      var searchBtn = document.getElementsByClassName("serch-btn")[0];
+      var searchInput = document.getElementsByClassName("serch-input")[0];
+      var searchMessage = document.getElementsByClassName("serch-message")[0];
+      var searchList = document.getElementsByClassName("search-list")[0];
+      var searchClose = document.getElementsByClassName("serch-btn-close")[0];
+
+      function setHtml() {
+        searchList.innerHTML = "";
+        if (searchInput.value) {
+          let outcome = answerData.filter((item) => {
+            return item.title.indexOf(searchInput.value) > -1;
+          });
+          outcome.forEach((item) => {
+            var itemEle = document.createElement("div");
+            itemEle.className = "serch-item";
+
+            var lineEle = document.createElement("div");
+            lineEle.className = "serch-item-line";
+
+            var ordinalEle = document.createElement("div");
+            ordinalEle.className = "serch-ordinal";
+            ordinalEle.innerHTML = `序号： ${item.ordinal}`;
+            itemEle.appendChild(ordinalEle);
+
+            if(item.subjects){
+              var subjectsEle = document.createElement("div");
+              subjectsEle.className = "serch-subjects";
+              subjectsEle.innerHTML = `科目： ${item.subjects}`;
+              itemEle.appendChild(subjectsEle);
+            }
+
+            if(item.type){
+              var titleTypeEle = document.createElement("div");
+              titleTypeEle.className = "serch-type";
+              titleTypeEle.innerHTML = `题目类型： ${item.type}`;
+              itemEle.appendChild(titleTypeEle);
+            }
+
+            if(item.title){
+              let re = new RegExp(searchInput.value, "ig");
+              var titleEle = document.createElement("div");
+              titleEle.className = "serch-title";
+              titleEle.innerHTML = `题目： ${item.title.replace(re, `<span class="search-seleact-title">${searchInput.value}</span>`) || "单选"}`;
+              itemEle.appendChild(titleEle);
+            }
+
+            item.options.forEach((itemOpt) => {
+              var optionEle = document.createElement("div");
+              optionEle.className = "serch-option";
+              optionEle.innerHTML = itemOpt;
+              itemEle.appendChild(optionEle);
+            });
+
+            var answerEle = document.createElement("div");
+            answerEle.className = "serch-answer";
+            answerEle.innerHTML = `正确选项: ${item.answer}`;
+            itemEle.appendChild(answerEle);
+
+            searchList.appendChild(itemEle);
+            searchList.appendChild(lineEle);
+          });
+        }
+        searchMessage.innerHTML = !searchInput.value ? "请输入搜索内容" : "";
+      }
+
+      searchBtn.onclick = function () {
+        setHtml();
+      };
+      searchClose.onclick = function () {
+        searchList.innerHTML = "";
+        searchInput.value = "";
+      };
+      document.onkeydown = function (e) {
+        // 回车提交表单
+        // 兼容FF和IE和Opera
+        var theEvent = window.event || e;
+        var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+        if (code == 13) {
+          setHtml();
+        }
+      };
+    </script>
+  </body>
+</html>
