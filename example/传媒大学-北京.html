@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap{
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+      }
+      .serch {
+        position: sticky;
+        left: 0;
+        top: 0;
+        padding-top: 20px;
+        box-sizing: border-box;
+        background-color: #fff;
+      }
+      .serch-input {
+        width: 60%;
+        height: 30px;
+        padding-left: 10px;
+        border: 1px solid #bbb;
+        outline: none;
+        border-radius: 6px;
+      }
+      .serch-btn,
+      .serch-btn-close {
+        width: 14%;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 6px;
+        outline: none;
+        border: 1px solid #f60;
+        color: #eee;
+        background-color: #f60;
+      }
+      .serch-btn:hover {
+        background-color: #f90;
+      }
+      .serch-btn-close {
+        background-color: red;
+      }
+      .serch-message {
+        color: red;
+      }
+
+      .search-list {
+        width: 100%;
+        overflow: hidden;
+      }
+      .serch-item {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      .serch-item-line {
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px dashed #987cb9;
+        color: #987cb9;
+      }
+      .search-seleact-title{
+        color: #f60;
+        display: inline-block;
+        background-color: rgb(247, 251, 6);
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+    </style>
+    <div class="wrap">
+      <div class="serch">
+        <input class="serch-input" />
+        <button class="serch-btn">搜索</button>
+        <button class="serch-btn-close">清空</button>
+        <div class="serch-message"></div>
+      </div>
+      <div class="search-list"></div>
+    </div>
+    <script>
+      // subjects 科目
+      // ordinal 序号
+      // type 题目类型
+      // title 题目类型
+      // options 选项
+      // answer 正确选项
+      let answerData = []
+      var serch = document.getElementsByClassName("serch")[0];
+      var searchBtn = document.getElementsByClassName("serch-btn")[0];
+      var searchInput = document.getElementsByClassName("serch-input")[0];
+      var searchMessage = document.getElementsByClassName("serch-message")[0];
+      var searchList = document.getElementsByClassName("search-list")[0];
+      var searchClose = document.getElementsByClassName("serch-btn-close")[0];
+
+      function setHtml() {
+        searchList.innerHTML = "";
+        if (searchInput.value) {
+          let outcome = answerData.filter((item) => {
+            return item.title.indexOf(searchInput.value) > -1;
+          });
+          outcome.forEach((item) => {
+            var itemEle = document.createElement("div");
+            itemEle.className = "serch-item";
+
+            var lineEle = document.createElement("div");
+            lineEle.className = "serch-item-line";
+
+            var ordinalEle = document.createElement("div");
+            ordinalEle.className = "serch-ordinal";
+            ordinalEle.innerHTML = `序号： ${item.ordinal}`;
+            itemEle.appendChild(ordinalEle);
+
+            if(item.subjects){
+              var subjectsEle = document.createElement("div");
+              subjectsEle.className = "serch-subjects";
+              subjectsEle.innerHTML = `科目： ${item.subjects}`;
+              itemEle.appendChild(subjectsEle);
+            }
+
+            if(item.type){
+              var titleTypeEle = document.createElement("div");
+              titleTypeEle.className = "serch-type";
+              titleTypeEle.innerHTML = `题目类型： ${item.type}`;
+              itemEle.appendChild(titleTypeEle);
+            }
+
+            if(item.title){
+              let re = new RegExp(searchInput.value, "ig");
+              var titleEle = document.createElement("div");
+              titleEle.className = "serch-title";
+              titleEle.innerHTML = `题目： ${item.title.replace(re, `<span class="search-seleact-title">${searchInput.value}</span>`) || "单选"}`;
+              itemEle.appendChild(titleEle);
+            }
+
+            item.options.forEach((itemOpt) => {
+              var optionEle = document.createElement("div");
+              optionEle.className = "serch-option";
+              optionEle.innerHTML = itemOpt;
+              itemEle.appendChild(optionEle);
+            });
+
+            var answerEle = document.createElement("div");
+            answerEle.className = "serch-answer";
+            answerEle.innerHTML = `正确选项: ${item.answer}`;
+            itemEle.appendChild(answerEle);
+
+            searchList.appendChild(itemEle);
+            searchList.appendChild(lineEle);
+          });
+        }
+        searchMessage.innerHTML = !searchInput.value ? "请输入搜索内容" : "";
+      }
+
+      searchBtn.onclick = function () {
+        setHtml();
+      };
+      searchClose.onclick = function () {
+        searchList.innerHTML = "";
+        searchInput.value = "";
+      };
+      document.onkeydown = function (e) {
+        // 回车提交表单
+        // 兼容FF和IE和Opera
+        var theEvent = window.event || e;
+        var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+        if (code == 13) {
+          setHtml();
+        }
+      };
+    </script>
+  </body>
+</html>

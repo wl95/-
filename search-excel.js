@@ -5,8 +5,10 @@ const path = require('path');
 
 // excel文件类径
 const excelFilePath = './excel'
+// 要生成的 html模板文件类径
+const exampleFilePath = './example/传媒大学-北京.html'
 
-function createJsonFile(filePath, fileName) {
+function createJsonFile(filePath, fileName, exampleFilePath) {
   //解析excel, 获取到所有sheets
   let sheets = xlsx.parse(filePath);
 
@@ -66,34 +68,62 @@ function createJsonFile(filePath, fileName) {
     // 数组格式, 根据不同的索引取数据
   })
 
-  // clipboardy.writeSync(JSON.stringify(excelJson))
-  console.log(excelJson, 'excelJson')
+  // function writeJsonFile () {
+  //   fs.writeFile(`./json/${fileName || 'excel'}.json`, JSON.stringify(excelJson), 'utf8', function (err) {
+  //     if (err) {
+  //       console.log("An error occured while writing JSON Object to File.");
+  //       return console.log(err);
+  //     }
+  //     console.log("JSON file has been saved.");
+  //   });
+  // }
+  // 生成后的html文件夹名称
+  let answer = 'answer'
 
-
-  fs.writeFile(`${fileName || 'excel'}.json`, JSON.stringify(excelJson), 'utf8', function (err) {
-    if (err) {
-      console.log("An error occured while writing JSON Object to File.");
-      return console.log(err);
-    }
-
-    console.log("JSON file has been saved.");
-  });
+  function writeJsonFile () {
+    fs.readFile(exampleFilePath, 'utf-8', function (err, contents) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      // 区分大小写
+      const replaced = contents.replace(/let answerData = \[\]/gi, `let answerData = ${JSON.stringify(excelJson)}`);
+      fs.writeFile(`./${answer}/${fileName || 'example'}.html`, replaced, 'utf8', function (err) {
+        if (err) {
+          console.log("An error occured while writing HTML Object to File.");
+          return console.log(err);
+        }
+        console.log("JSON file has been saved.");
+      });
+    });
+  }
+  if (!fs.existsSync(answer)) {
+    fs.mkdir(answer, (err) => {
+      if(err) throw err; // 如果出现错误就抛出错误信息
+      writeJsonFile()
+    })
+  } else {
+    writeJsonFile()
+  }
 }
 
 /**
  * 文件遍历方法
  * @param filePath 需要遍历的文件路径
  */
-function fileDisplay(filePath) {
+function fileDisplay({
+  excelFilePath,
+  exampleFilePath
+}) {
   //根据文件路径读取文件，返回文件列表
-  fs.readdir(filePath, function (err, files) {
+  fs.readdir(excelFilePath, function (err, files) {
     if (err) {
       console.warn(err, "读取文件夹错误！")
     } else {
       //遍历读取到的文件列表
       files.forEach(function (filename) {
         //获取当前文件的绝对路径
-        var filedir = path.join(filePath, filename);
+        var filedir = path.join(excelFilePath, filename);
         //根据文件路径获取文件信息，返回一个fs.Stats对象
         fs.stat(filedir, function (eror, stats) {
           if (eror) {
@@ -103,7 +133,7 @@ function fileDisplay(filePath) {
             var isDir = stats.isDirectory(); //是文件夹
             if (isFile) {
               let name = path.parse(filename).name;
-              createJsonFile(filedir, name)
+              createJsonFile(filedir, name, exampleFilePath)
             }
             if (isDir) {
               fileDisplay(filedir); //递归，如果是文件夹，就继续遍历该文件夹下面的文件
@@ -115,4 +145,7 @@ function fileDisplay(filePath) {
   });
 }
 
-fileDisplay(excelFilePath)
+fileDisplay({ 
+  excelFilePath,
+  exampleFilePath
+})
