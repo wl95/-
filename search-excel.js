@@ -52,10 +52,10 @@ function createJsonFile(filePath, fileName) {
       }
       if(indexArr.indexOf('选项A') > -1 || indexArr.indexOf('选项B') > -1  || indexArr.indexOf('选项C') > -1  || indexArr.indexOf('选项D') > -1 ){
         excelJsonItem.options = [
-          row[indexArr.indexOf('选项A')],
-          row[indexArr.indexOf('选项B')],
-          row[indexArr.indexOf('选项C')],
-          row[indexArr.indexOf('选项D')],
+          `A: ${row[indexArr.indexOf('选项A')]}`,
+          `B: ${row[indexArr.indexOf('选项B')]}`,
+          `C: ${row[indexArr.indexOf('选项C')]}`,
+          `D: ${row[indexArr.indexOf('选项D')]}`,
         ]
       }
       if(indexArr.indexOf('正确选项') > -1){
