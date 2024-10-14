@@ -1,3 +1,4 @@
+<!-- 搜题模板 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -130,7 +131,7 @@
             if(item.type){
               var titleTypeEle = document.createElement("div");
               titleTypeEle.className = "serch-type";
-              titleTypeEle.innerHTML = `题目类型： ${item.type}`;
+              titleTypeEle.innerHTML = `题目类型： ${item.questionTypeDisp}`;
               itemEle.appendChild(titleTypeEle);
             }
 

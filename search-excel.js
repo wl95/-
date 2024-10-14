@@ -4,9 +4,9 @@ const fs = require('fs');
 const path = require('path');
 
 // excel文件类径
-const excelFilePath = './excel'
+const excelFilePath = './excel/2024-10-14'
 // 要生成的 html模板文件类径
-const exampleFilePath = './example/传媒大学-北京.html'
+const exampleFilePath = './example/search-topic.html'
 
 function createJsonFile(filePath, fileName, exampleFilePath) {
   //解析excel, 获取到所有sheets
@@ -36,7 +36,7 @@ function createJsonFile(filePath, fileName, exampleFilePath) {
   // options 选项
   // answer 正确选项
   sheet.data.map((row, index) => {
-    let excelJsonItem = {}
+    let excelJsonItem = { options: [] }
     if(index === 0){
       indexArr = [...row]
     } else {
@@ -47,21 +47,43 @@ function createJsonFile(filePath, fileName, exampleFilePath) {
         excelJsonItem.subjects = row[indexArr.indexOf('科目')]
       }
       if(indexArr.indexOf('题目类型') > -1){
-        excelJsonItem.type = row[indexArr.indexOf('题目类型')]
+        let typeDisp = {
+          '单选': '1',
+          '多选': '2',
+          '填空题': '3',
+          '简答题': '4'
+        }
+        excelJsonItem.questionType = typeDisp[row[indexArr.indexOf('题目类型')]]
+        excelJsonItem.questionTypeDisp = row[indexArr.indexOf('题目类型')]
       }
       if(indexArr.indexOf('题目') > -1){
         excelJsonItem.title = row[indexArr.indexOf('题目')]
       }
-      if(indexArr.indexOf('选项A') > -1 || indexArr.indexOf('选项B') > -1  || indexArr.indexOf('选项C') > -1  || indexArr.indexOf('选项D') > -1 ){
-        excelJsonItem.options = [
-          `A: ${row[indexArr.indexOf('选项A')]}`,
-          `B: ${row[indexArr.indexOf('选项B')]}`,
-          `C: ${row[indexArr.indexOf('选项C')]}`,
-          `D: ${row[indexArr.indexOf('选项D')]}`,
-        ]
+      // if(indexArr.indexOf('选项A') > -1 || indexArr.indexOf('选项B') > -1  || indexArr.indexOf('选项C') > -1  || indexArr.indexOf('选项D') > -1  || indexArr.indexOf('选项E') > -1  || indexArr.indexOf('选项F') > -1 || indexArr.indexOf('选项G') > -1){
+      if(indexArr.indexOf('选项A') > -1 && row[indexArr.indexOf('选项A')]){
+        excelJsonItem.options.push(`A: ${row[indexArr.indexOf('选项A')]}`)
       }
+      if(indexArr.indexOf('选项B') > -1 && row[indexArr.indexOf('选项B')]){
+        excelJsonItem.options.push(`B: ${row[indexArr.indexOf('选项B')]}`)
+      }
+      if(indexArr.indexOf('选项C') > -1 && row[indexArr.indexOf('选项C')]){
+        excelJsonItem.options.push(`C: ${row[indexArr.indexOf('选项C')]}`)
+      }
+      if(indexArr.indexOf('选项D') > -1 && row[indexArr.indexOf('选项D')]){
+        excelJsonItem.options.push(`D: ${row[indexArr.indexOf('选项D')]}`)
+      }
+      if(indexArr.indexOf('选项E') > -1 && row[indexArr.indexOf('选项E')]){
+        excelJsonItem.options.push(`E: ${row[indexArr.indexOf('选项E')]}`)
+      }
+      if(indexArr.indexOf('选项F') > -1 && row[indexArr.indexOf('选项F')]){
+        excelJsonItem.options.push(`F: ${row[indexArr.indexOf('选项F')]}`)
+      }
+      if(indexArr.indexOf('选项G') > -1 && row[indexArr.indexOf('选项G')]){
+        excelJsonItem.options.push(`G: ${row[indexArr.indexOf('选项G')]}`)
+      }
+      // }
       if(indexArr.indexOf('正确选项') > -1){
-        excelJsonItem.answer = row[indexArr.indexOf('正确选项')]
+        excelJsonItem.answer = row[indexArr.indexOf('正确选项')].replace(/(^\s*)|(\s*$)/g, "")
       }
       excelJson.push(excelJsonItem)
     }

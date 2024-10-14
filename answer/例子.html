@@ -1,0 +1,183 @@
+<!-- 搜题模板 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap{
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+      }
+      .serch {
+        position: sticky;
+        left: 0;
+        top: 0;
+        padding-top: 20px;
+        box-sizing: border-box;
+        background-color: #fff;
+      }
+      .serch-input {
+        width: 60%;
+        height: 30px;
+        padding-left: 10px;
+        border: 1px solid #bbb;
+        outline: none;
+        border-radius: 6px;
+      }
+      .serch-btn,
+      .serch-btn-close {
+        width: 14%;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 6px;
+        outline: none;
+        border: 1px solid #f60;
+        color: #eee;
+        background-color: #f60;
+      }
+      .serch-btn:hover {
+        background-color: #f90;
+      }
+      .serch-btn-close {
+        background-color: red;
+      }
+      .serch-message {
+        color: red;
+      }
+
+      .search-list {
+        width: 100%;
+        overflow: hidden;
+      }
+      .serch-item {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      .serch-item-line {
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px dashed #987cb9;
+        color: #987cb9;
+      }
+      .search-seleact-title{
+        color: #f60;
+        display: inline-block;
+        background-color: rgb(247, 251, 6);
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+    </style>
+    <div class="wrap">
+      <div class="serch">
+        <input class="serch-input" />
+        <button class="serch-btn">搜索</button>
+        <button class="serch-btn-close">清空</button>
+        <div class="serch-message"></div>
+      </div>
+      <div class="search-list"></div>
+    </div>
+    <script>
+      // subjects 科目
+      // ordinal 序号
+      // type 题目类型
+      // title 题目类型
+      // options 选项
+      // answer 正确选项
+      let answerData = [{"options":["A: “自由艺术”","B: “机械艺术”","C: “美的艺术”","D: “审美艺术”"],"ordinal":1,"subjects":"艺术概论","questionType":"1","questionTypeDisp":"单选","title":"在古代等级社会中，工匠、优伶的地位一般不高，属于“劳力”的被统治阶级，因此，绘画、雕塑、音乐、舞蹈等艺术，在古代大多都被归于（ ）之列 ，也被称为奴隶的艺术","answer":"B"},{"options":["A: 中世纪","B: 启蒙时代","C: 文艺复兴","D: 古希腊罗马时期"],"ordinal":2,"subjects":"艺术概论","questionType":"1","questionTypeDisp":"单选","title":"2.“美的艺术”（fine arts） 这一现代艺术观念是源于（ ）以来的欧洲。","answer":"C"},{"options":["A: 法国学者夏尔·巴托《归结为同一原理的美的艺术》","B: 古希腊哲学家柏拉图《理想国》 ","C: 德国哲学家黑格尔《美学》","D: 意大利艺术家达·芬奇 "],"ordinal":3,"subjects":"艺术概论","questionType":"1","questionTypeDisp":"单选","title":"3.工匠、优伶之能事能与“自由人”从事的“自由艺术”平起平坐源于（  ）。","answer":"A"},{"options":["A: 我国古代“劳力”（体力劳动）和“劳心”（精神劳动）的建立在社会等级区分上","B: 欧洲中世纪的学者，将各种生产劳动和谋生技艺归“劳力”之列","C: “美的艺术”概念的普及使得劳心与劳力平起平坐","D: 18世纪美术学院之外的工匠绘画、工匠雕塑，仍然被归入“劳力”","E: “劳心”现如今多代表的是指通识教育，包括人文、艺术和科学"],"ordinal":4,"subjects":"艺术概论","questionType":"2","questionTypeDisp":"多选","title":"以下关于艺术中劳心与劳力的区分说法正确的是（  ）","answer":"ABD"},{"options":["A: 士大夫艺术","B: 宫廷艺术","C: 宗教艺术","D: 文人艺术","E: 民间艺术"],"ordinal":5,"subjects":"艺术概论","questionType":"2","questionTypeDisp":"多选","title":"通常，学者们把中国古代艺术分为（  ）","answer":"BCDE"},{"options":[],"ordinal":6,"subjects":"艺术概论","questionType":"3","questionTypeDisp":"填空题","title":"（），即古希腊、古罗马和欧洲中世纪上层阶级从事的学习和研究活动，一般包括文法、 逻辑、修辞、算数、几何、天文和音律等七种学问。","answer":"自由艺术"},{"options":[],"ordinal":7,"subjects":"艺术概论","questionType":"3","questionTypeDisp":"填空题","title":"古希腊哲学家亚里士多德主张从“（）”和“（）”的角度来看待艺术，为西方古典文艺理论奠定了基础。","answer":"“技艺”和“摹仿”"},{"options":[],"ordinal":8,"subjects":"艺术概论","questionType":"4","questionTypeDisp":"简答题","title":"简述从技艺的角度看待艺术","answer":"答：（1）传统艺术，如绘画、雕塑、音乐、舞蹈、戏剧等对于身体的技艺要求\n（2）科学技术发展下艺术媒介，如照相机、数码技术、电影摄影机等变革对艺术形式的影响\n（3）新媒体艺术的兴起，如录像、计算机艺术及电子音乐，高科技化趋势明显。\n（4）高科技时代对手工技艺和身体艺术的重新认识，在非遗保护下与高科技艺术并驾齐驱"},{"options":[],"ordinal":9,"subjects":"艺术概论","questionType":"4","questionTypeDisp":"简答题","title":"简述艺术设计与现代生活的关系","answer":"答：（1）与现代生产对应的现代设计，以艺科融合的方式，为现代人的日常生活服务。\n（2）设计广泛渗透于日常生活的各个层面，不仅局限于日用品。它涵盖了从产品制造到市场呈现的全过程。\n（3）交通工具设计、“非物质化”设计以及针对于不同群体的特定设计，设计以其多元化和包容性，全方位地影响着现代生活"}]
+      var serch = document.getElementsByClassName("serch")[0];
+      var searchBtn = document.getElementsByClassName("serch-btn")[0];
+      var searchInput = document.getElementsByClassName("serch-input")[0];
+      var searchMessage = document.getElementsByClassName("serch-message")[0];
+      var searchList = document.getElementsByClassName("search-list")[0];
+      var searchClose = document.getElementsByClassName("serch-btn-close")[0];
+
+      function setHtml() {
+        searchList.innerHTML = "";
+        if (searchInput.value) {
+          let outcome = answerData.filter((item) => {
+            return item.title.indexOf(searchInput.value) > -1;
+          });
+          outcome.forEach((item) => {
+            var itemEle = document.createElement("div");
+            itemEle.className = "serch-item";
+
+            var lineEle = document.createElement("div");
+            lineEle.className = "serch-item-line";
+
+            var ordinalEle = document.createElement("div");
+            ordinalEle.className = "serch-ordinal";
+            ordinalEle.innerHTML = `序号： ${item.ordinal}`;
+            itemEle.appendChild(ordinalEle);
+
+            if(item.subjects){
+              var subjectsEle = document.createElement("div");
+              subjectsEle.className = "serch-subjects";
+              subjectsEle.innerHTML = `科目： ${item.subjects}`;
+              itemEle.appendChild(subjectsEle);
+            }
+
+            if(item.type){
+              var titleTypeEle = document.createElement("div");
+              titleTypeEle.className = "serch-type";
+              titleTypeEle.innerHTML = `题目类型： ${item.questionTypeDisp}`;
+              itemEle.appendChild(titleTypeEle);
+            }
+
+            if(item.title){
+              let re = new RegExp(searchInput.value, "ig");
+              var titleEle = document.createElement("div");
+              titleEle.className = "serch-title";
+              titleEle.innerHTML = `题目： ${item.title.replace(re, `<span class="search-seleact-title">${searchInput.value}</span>`) || "单选"}`;
+              itemEle.appendChild(titleEle);
+            }
+
+            item.options.forEach((itemOpt) => {
+              var optionEle = document.createElement("div");
+              optionEle.className = "serch-option";
+              optionEle.innerHTML = itemOpt;
+              itemEle.appendChild(optionEle);
+            });
+
+            var answerEle = document.createElement("div");
+            answerEle.className = "serch-answer";
+            answerEle.innerHTML = `正确选项: ${item.answer}`;
+            itemEle.appendChild(answerEle);
+
+            searchList.appendChild(itemEle);
+            searchList.appendChild(lineEle);
+          });
+        }
+        searchMessage.innerHTML = !searchInput.value ? "请输入搜索内容" : "";
+      }
+
+      searchBtn.onclick = function () {
+        setHtml();
+      };
+      searchClose.onclick = function () {
+        searchList.innerHTML = "";
+        searchInput.value = "";
+      };
+      document.onkeydown = function (e) {
+        // 回车提交表单
+        // 兼容FF和IE和Opera
+        var theEvent = window.event || e;
+        var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+        if (code == 13) {
+          setHtml();
+        }
+      };
+    </script>
+  </body>
+</html>

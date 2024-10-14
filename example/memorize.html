@@ -1,0 +1,343 @@
+<!-- 背题模板 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        padding-top: 20px;
+      }
+      .head{
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: 10px;
+      }
+      .memorize {
+        width: 60%;
+        float: left;
+        overflow: hidden;
+      }
+      .pre {
+        float: left;
+      }
+      .next {
+        float: right;
+      }
+      .memorize-btn,.memorize-sure,.clear-cache {
+        width: 120px;
+        height: 30px;
+        line-height: 30px;
+        background-color: rgb(49, 49, 253);
+        outline: none;
+        border: none;
+        cursor: pointer;
+        color: aliceblue;
+      }
+      .clear-cache{
+        float: right;
+      }
+      .memorize-sure{
+        margin-top: 10px;
+      }
+      .disabled {
+        cursor: no-drop;
+        pointer-events: none;
+        background-color: #6d6c6c;
+      }
+      .memorize-option {
+        cursor: pointer;
+      }
+      .memorize-option.memorize-option-active {
+        color: rgb(49, 49, 253);
+      }
+      .memorize-option.memorize-option-wrong {
+        color: rgb(250, 41, 4);
+      }
+    </style>
+    <div class="wrap">
+      <div class="head">
+        <div class="memorize">
+          <button class="memorize-btn pre">上一题</button>
+          <button class="memorize-btn next">下一题</button>
+        </div>
+        <button class="clear-cache">清空缓存</button>
+      </div>
+      <div class="current-topic"></div>
+    </div>
+    <script>
+      // subjects 科目
+      // ordinal 序号
+      // type 题目类型
+      // title 题目类型
+      // options 选项
+      // answer 正确选项
+      let answerData = [{"options":["A: “自由艺术”","B: “机械艺术”","C: “美的艺术”","D: “审美艺术”"],"ordinal":1,"subjects":"艺术概论","questionType":"1","questionTypeDisp":"单选","title":"在古代等级社会中，工匠、优伶的地位一般不高，属于“劳力”的被统治阶级，因此，绘画、雕塑、音乐、舞蹈等艺术，在古代大多都被归于（ ）之列 ，也被称为奴隶的艺术","answer":"B"},{"options":["A: 中世纪","B: 启蒙时代","C: 文艺复兴","D: 古希腊罗马时期"],"ordinal":2,"subjects":"艺术概论","questionType":"1","questionTypeDisp":"单选","title":"2.“美的艺术”（fine arts） 这一现代艺术观念是源于（ ）以来的欧洲。","answer":"C"},{"options":["A: 法国学者夏尔·巴托《归结为同一原理的美的艺术》","B: 古希腊哲学家柏拉图《理想国》 ","C: 德国哲学家黑格尔《美学》","D: 意大利艺术家达·芬奇 "],"ordinal":3,"subjects":"艺术概论","questionType":"1","questionTypeDisp":"单选","title":"3.工匠、优伶之能事能与“自由人”从事的“自由艺术”平起平坐源于（  ）。","answer":"A"},{"options":["A: 我国古代“劳力”（体力劳动）和“劳心”（精神劳动）的建立在社会等级区分上","B: 欧洲中世纪的学者，将各种生产劳动和谋生技艺归“劳力”之列","C: “美的艺术”概念的普及使得劳心与劳力平起平坐","D: 18世纪美术学院之外的工匠绘画、工匠雕塑，仍然被归入“劳力”","E: “劳心”现如今多代表的是指通识教育，包括人文、艺术和科学"],"ordinal":4,"subjects":"艺术概论","questionType":"2","questionTypeDisp":"多选","title":"以下关于艺术中劳心与劳力的区分说法正确的是（  ）","answer":"ABD"},{"options":["A: 士大夫艺术","B: 宫廷艺术","C: 宗教艺术","D: 文人艺术","E: 民间艺术"],"ordinal":5,"subjects":"艺术概论","questionType":"2","questionTypeDisp":"多选","title":"通常，学者们把中国古代艺术分为（  ）","answer":"BCDE"},{"options":[],"ordinal":6,"subjects":"艺术概论","questionType":"3","questionTypeDisp":"填空题","title":"（），即古希腊、古罗马和欧洲中世纪上层阶级从事的学习和研究活动，一般包括文法、 逻辑、修辞、算数、几何、天文和音律等七种学问。","answer":"自由艺术"},{"options":[],"ordinal":7,"subjects":"艺术概论","questionType":"3","questionTypeDisp":"填空题","title":"古希腊哲学家亚里士多德主张从“（）”和“（）”的角度来看待艺术，为西方古典文艺理论奠定了基础。","answer":"“技艺”和“摹仿”"},{"options":[],"ordinal":8,"subjects":"艺术概论","questionType":"4","questionTypeDisp":"简答题","title":"简述从技艺的角度看待艺术","answer":"答：（1）传统艺术，如绘画、雕塑、音乐、舞蹈、戏剧等对于身体的技艺要求\n（2）科学技术发展下艺术媒介，如照相机、数码技术、电影摄影机等变革对艺术形式的影响\n（3）新媒体艺术的兴起，如录像、计算机艺术及电子音乐，高科技化趋势明显。\n（4）高科技时代对手工技艺和身体艺术的重新认识，在非遗保护下与高科技艺术并驾齐驱"},{"options":[],"ordinal":9,"subjects":"艺术概论","questionType":"4","questionTypeDisp":"简答题","title":"简述艺术设计与现代生活的关系","answer":"答：（1）与现代生产对应的现代设计，以艺科融合的方式，为现代人的日常生活服务。\n（2）设计广泛渗透于日常生活的各个层面，不仅局限于日用品。它涵盖了从产品制造到市场呈现的全过程。\n（3）交通工具设计、“非物质化”设计以及针对于不同群体的特定设计，设计以其多元化和包容性，全方位地影响着现代生活"}]
+      let storgeCount = window.sessionStorage.getItem("count");
+      let count = storgeCount || 0;
+      let correct = "";
+      var clearCache = document.getElementsByClassName("clear-cache")[0];
+      var preBtn = document.getElementsByClassName("pre")[0];
+      var nextBtn = document.getElementsByClassName("next")[0];
+      var currentTopic = document.getElementsByClassName("current-topic")[0];
+
+      function nextHtml() {
+        count++;
+        if (count >= answerData.length - 1) {
+          count = answerData.length - 1;
+          nextBtn.className = `${nextBtn.className} disabled`;
+        } else {
+          preBtn.classList.remove("disabled");
+        }
+        setHtml(count);
+      }
+
+      function setHtml(_count) {
+        if (count <= 0) {
+          preBtn.className = `${preBtn.className} disabled`;
+        }
+        if (count >= answerData.length - 1) {
+          nextBtn.className = `${nextBtn.className} disabled`;
+        }
+        let doneTopic = JSON.parse(
+          window.sessionStorage.getItem("doneTopic") || "[]"
+        );
+        window.sessionStorage.setItem("count", _count);
+        currentTopic.innerHTML = "";
+        let item = answerData[_count];
+        var itemEle = document.createElement("div");
+        itemEle.className = "memorize-item";
+
+        var lineEle = document.createElement("div");
+        lineEle.className = "memorize-item-line";
+
+        var ordinalEle = document.createElement("div");
+        ordinalEle.className = "memorize-ordinal";
+        ordinalEle.innerHTML = `序号： ${item.ordinal}`;
+        itemEle.appendChild(ordinalEle);
+
+        if (item.subjects) {
+          var subjectsEle = document.createElement("div");
+          subjectsEle.className = "memorize-subjects";
+          subjectsEle.innerHTML = `科目： ${item.subjects}`;
+          itemEle.appendChild(subjectsEle);
+        }
+
+        if (item.questionType) {
+          var titleTypeEle = document.createElement("div");
+          titleTypeEle.className = "memorize-type";
+          titleTypeEle.innerHTML = `题目类型： ${item.questionTypeDisp}`;
+          itemEle.appendChild(titleTypeEle);
+        }
+
+        if (item.title) {
+          var titleEle = document.createElement("div");
+          titleEle.className = "memorize-title";
+          titleEle.innerHTML = `题目：${item.title} `;
+          itemEle.appendChild(titleEle);
+        }
+
+        let optionEleList = [];
+        let isActive = true;
+        let optionLetter = {
+          0: "A",
+          1: "B",
+          2: "C",
+          3: "D",
+          4: "E",
+          5: "F",
+          6: "G",
+        };
+        let selecteds = []
+        // 正确答案提示
+        var answerEle = document.createElement("div");
+        answerEle.className = "memorize-answer";
+
+        // 多选确认按钮
+        var sureBtnEle = document.createElement("button");
+        sureBtnEle.className = "memorize-sure";
+        sureBtnEle.innerHTML = '确认答案'
+        sureBtnEle.style.display = 'block'
+
+        sureBtnEle.onclick = function (e) {
+          console.log(selecteds.join(''), item.answer,'selecteds')
+          let doneTopic = JSON.parse(
+            window.sessionStorage.getItem("doneTopic") || "[]"
+          );
+          doneTopic.push({
+            ...item,
+            selectAnswer: selecteds,
+          });
+          window.sessionStorage.setItem(
+            "doneTopic",
+            JSON.stringify(doneTopic)
+          );
+          optionEleList.forEach((_item, _index) => {
+            let currentAnswer = _item.getAttribute("answer");
+            if ((item.answer.indexOf(currentAnswer) > -1 &&  selecteds.indexOf(currentAnswer) > -1) || (item.answer.indexOf(currentAnswer) > -1 &&  selecteds.indexOf(currentAnswer) < 0)) {
+              _item.className = "memorize-option memorize-option-active";
+            }
+            if (item.answer.indexOf(currentAnswer) < 0 &&  selecteds.indexOf(currentAnswer) > -1) {
+              _item.className = "memorize-option memorize-option-wrong";
+            }
+          });
+          answerEle.style.display = "block";
+          answerEle.innerHTML = `答案: ${item.answer} 您选择 ${selecteds.join('')}`;
+          sureBtnEle.style.display = 'none'
+        }
+
+        let doneList = doneTopic.filter(
+          (doneTopicTtem) => doneTopicTtem.ordinal === item.ordinal
+        );
+
+        if (Array.isArray(doneList) && doneList.length > 0) {
+          let selectDone = doneList[0];
+          if (selectDone.selectAnswer) {
+            answerEle.innerHTML = `答案: ${item.answer} 您选择 ${selectDone.selectAnswer}`;
+            answerEle.style.display = "block";
+            isActive = false;
+          }
+        }
+
+        // 添加选项
+        var correctEleList = document.createElement("div");
+        correctEleList.className = "correct-list";
+
+        item.options.forEach((itemOpt, index) => {
+          var optionEle = document.createElement("div");
+          optionEle.className = "memorize-option";
+          optionEle.setAttribute("answer", optionLetter[index]);
+          optionEle.innerHTML = itemOpt;
+          optionEle.onclick = function (e) {
+            if (!isActive) {
+              return;
+            }
+            let selectAnswer = e.target.getAttribute("answer");
+            if (item.questionType === "1") {
+              let doneTopic = JSON.parse(
+                window.sessionStorage.getItem("doneTopic") || "[]"
+              );
+              if (selectAnswer === item.answer) {
+                e.target.className = "memorize-option memorize-option-active";
+                // nextHtml()
+              } else {
+                optionEleList.forEach((_item, _index) => {
+                  let currentAnswer = _item.getAttribute("answer");
+                  if (currentAnswer === item.answer) {
+                    _item.className = "memorize-option memorize-option-active";
+                  }
+                });
+                e.target.className = "memorize-option memorize-option-wrong";
+                isActive = false;
+              }
+              answerEle.style.display = "block";
+              answerEle.innerHTML = `答案: ${item.answer} 您选择 ${selectAnswer}`;
+              doneTopic.push({
+                ...item,
+                selectAnswer,
+              });
+              window.sessionStorage.setItem(
+                "doneTopic",
+                JSON.stringify(doneTopic)
+              );
+            }
+            if (item.questionType === "2") {
+              e.target.className = "memorize-option memorize-option-active";
+              selecteds.push(selectAnswer)
+            }
+          };
+
+          if (Array.isArray(doneList) && doneList.length > 0) {
+            let selectDone = doneList[0];
+            if (item.questionType === "1") {
+              if (selectDone.selectAnswer === item.answer) {
+                if (selectDone.selectAnswer === optionLetter[index]) {
+                  optionEle.className = "memorize-option memorize-option-active";
+                }
+              } else {
+                if (selectDone.selectAnswer === optionLetter[index]) {
+                  optionEle.className = "memorize-option memorize-option-wrong";
+                }
+                if (item.answer === optionLetter[index]) {
+                  optionEle.className = "memorize-option memorize-option-active";
+                }
+              }
+            }
+            if (item.questionType === "2") {
+              sureBtnEle.style.display = 'none'
+              if ((item.answer.indexOf(optionLetter[index]) > -1 &&  selectDone.selectAnswer.indexOf(optionLetter[index]) > -1) || (item.answer.indexOf(optionLetter[index]) > -1 &&  selectDone.selectAnswer.indexOf(optionLetter[index]) < 0)) {
+                optionEle.className = "memorize-option memorize-option-active";
+              }
+              if (item.answer.indexOf(optionLetter[index]) < 0 &&  selectDone.selectAnswer.indexOf(optionLetter[index]) > -1) {
+                optionEle.className = "memorize-option memorize-option-wrong";
+              }
+            }
+          }
+
+          optionEleList.push(optionEle);
+          correctEleList.appendChild(optionEle);
+        });
+
+        itemEle.appendChild(correctEleList);
+
+        if(item.questionType === '2'){
+          itemEle.appendChild(sureBtnEle);
+        }
+
+        if(item.questionType !== "1" && item.questionType !== "2"){
+          answerEle.innerHTML = `正确答案: ${item.answer}`;
+        }
+        itemEle.appendChild(answerEle);
+        correct = item.answer;
+
+        currentTopic.appendChild(itemEle);
+        currentTopic.appendChild(lineEle);
+      }
+
+      preBtn.onclick = function () {
+        count--;
+        if (count <= 0) {
+          count = 0;
+          preBtn.className = `${preBtn.className} disabled`;
+        } else {
+          nextBtn.classList.remove("disabled");
+        }
+        setHtml(count);
+      };
+
+      clearCache.onclick = function () {
+        window.sessionStorage.setItem("count", 0);
+        window.sessionStorage.setItem("doneTopic", "");
+        setHtml(0);
+      };
+
+      nextBtn.onclick = nextHtml;
+      setHtml(count);
+      document.onkeydown = function (e) {
+        // 回车提交表单
+        // 兼容FF和IE和Opera
+        var theEvent = window.event || e;
+        var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+        if (code == 13) {
+          setHtml();
+        }
+      };
+    </script>
+  </body>
+</html>
